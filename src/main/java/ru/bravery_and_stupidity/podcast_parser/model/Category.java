@@ -9,17 +9,23 @@ import java.util.stream.Collectors;
 
 final public class Category {
     @NotNull
-    private Long id;
+    private Long id = 0L;
 
     @NotNull
-    private String name;
+    private String name = "";
 
     @NotNull
-    private String url;
+    private String url = "";
 
     @NotNull
     public Long getId() {
         return id;
+    }
+
+    public Category(@NotNull Long id, @NotNull String name, @NotNull String url) {
+        this.id = id;
+        this.name = name;
+        this.url = url;
     }
 
     @Override

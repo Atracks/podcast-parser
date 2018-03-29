@@ -9,15 +9,15 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @JsonNaming
-public class CategoryDto {
+public final class CategoryDto {
     @NotNull
-    private Long id;
+    private Long id = 0L;
 
     @NotNull
-    private String name;
+    private String name = "";
 
     @NotNull
-    private String url;
+    private String url = "";
 
     @NotNull
     public Long getId() {
@@ -48,10 +48,7 @@ public class CategoryDto {
 
     @NotNull
     public Category mapToModel() {
-        Category category = new Category();
-        category.setId(id);
-        category.setName(name);
-        category.setUrl(url);
+        Category category = new Category(id, name, url);
         return category;
     }
 

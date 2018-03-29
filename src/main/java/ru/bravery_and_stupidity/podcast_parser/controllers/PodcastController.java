@@ -11,14 +11,14 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/podcasts")
-public class PodcastController {
+class PodcastController {
 
     @Autowired
     PodcastService service;
 
-    @RequestMapping(value = "/getList/{nameCategory}", method = RequestMethod.GET)
+    @RequestMapping(value = "/getList/{categoryId}", method = RequestMethod.GET)
     @ResponseBody
-    public List<PodcastDto> getListPodCasts(@PathVariable("nameCategory") String name) {
-        return Podcast.mapToDtos(service.getList(name));
+    public List<PodcastDto> getListPodCasts(@PathVariable("categoryId") Long categoryId) {
+        return Podcast.mapToDtos(service.getList(categoryId));
     }
 }

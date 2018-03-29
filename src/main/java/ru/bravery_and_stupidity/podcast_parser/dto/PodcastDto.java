@@ -10,19 +10,22 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @JsonNaming
-public class PodcastDto {
+public final class PodcastDto {
 
     @NotNull
-    private Long id;
+    private Long id = 0L;
 
     @NotNull
-    private String name;
+    private Long categoryId = 0L;
+
+    @NotNull
+    private String name = "";
 
     @NotNull
     private Date date;
 
     @NotNull
-    private String url;
+    private String url = "";
 
     @NotNull
     public Long getId() {
@@ -33,6 +36,14 @@ public class PodcastDto {
         this.id = id;
     }
 
+    @NotNull
+    public Long getCategoryId() {
+        return categoryId;
+    }
+
+    public void setCategoryId(@NotNull Long categoryId) {
+        this.categoryId = categoryId;
+    }
 
     @NotNull
     public String getName() {
@@ -63,12 +74,7 @@ public class PodcastDto {
 
     @NotNull
     public Podcast mapToModel() {
-        Podcast podcast = new Podcast();
-        podcast.setId(id);
-        podcast.setName(name);
-        podcast.setUrl(url);
-        podcast.setDate(date);
-        return podcast;
+        return new Podcast(id,categoryId,name,date,url);
     }
 
     @NotNull

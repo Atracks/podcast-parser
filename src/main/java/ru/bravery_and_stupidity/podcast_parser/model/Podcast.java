@@ -12,19 +12,27 @@ import java.util.stream.Collectors;
 final public class Podcast {
 
     @NotNull
-    private Long id;
+    private Long id = 0L;
 
     @NotNull
-    private Long categoryId;
+    private Long categoryId = 0L;
 
     @NotNull
-    private String name;
+    private String name = "";
 
     @NotNull
-    private Date date;
+    private Date date = new Date(0L);
 
     @NotNull
-    private String url;
+    private String url = "";
+
+    public Podcast(@NotNull Long id, @NotNull Long categoryId, @NotNull String name, @NotNull Date date, @NotNull String url) {
+        this.id = id;
+        this.categoryId = categoryId;
+        this.name = name;
+        this.date = date;
+        this.url = url;
+    }
 
     @Override
     public boolean equals(Object o) {
@@ -94,6 +102,7 @@ final public class Podcast {
     public PodcastDto mapToDto() {
         PodcastDto podcast = new PodcastDto();
         podcast.setId(id);
+        podcast.getCategoryId();
         podcast.setName(name);
         podcast.setUrl(url);
         podcast.setDate(date);
